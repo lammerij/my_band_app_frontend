@@ -63,6 +63,7 @@ body {
   border-radius: 8px;
   padding: 10px;
   justify-content: space-around;
+  align-items: center;
 }
 
 .card .user_img img {
@@ -70,17 +71,23 @@ body {
   margin-right: 20px;
   width: 120px;
   border-radius: 15px;
+  align-items: center;
+  display: flex;
 }
 
 .user_info h1 {
   font-size: 14px;
   color: #1e212d;
   margin: 10px 0;
+  align-items: center;
+  display: flex;
 }
 
 .user_info p {
   color: #a1a1a1;
   font-size: 14px;
+  align-items: center;
+  display: flex;
 }
 
 .user_info .row {
@@ -92,6 +99,8 @@ body {
 
 .user_info .row h1 {
   font-size: 20px;
+  align-items: center;
+  display: flex;
 }
 
 .btn a {

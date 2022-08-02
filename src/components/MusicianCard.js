@@ -18,23 +18,21 @@ function MusicianCard({ musician }) {
   //   }
 
   return (
-    <div class="card">
-      <div class="user_info">
+    <div className="card">
+      <div className="user_info">
         <h1>{name}</h1>
         <p>{instrument}</p>
-        <div class="row">
-          <div class="follow">
-            <p>City</p>
-            <h5>{city}</h5>
-          </div>
-          <div class="follower">
-            <p>Years Experience</p>
-            <h5>{years_experience}</h5>
-          </div>
-          <div class="btn">
-            <a href="">Hire</a>
+      </div>
+      <div>
+        <p>City: {city}</p>
+        <div className="row">
+          <div className="follower">
+            <p>Years Experience: {years_experience}</p>
           </div>
         </div>
+      </div>
+      <div className="btn">
+        <a href="">Retire</a>
       </div>
     </div>
   );
