@@ -5,10 +5,10 @@ const linkStyles = {
   width: "100px",
   padding: "12px",
   margin: "0 6px 6px",
-  display: 'inline-flex',
+  display: "inline-flex",
   background: "black",
   textDecoration: "none",
-  color: "white" 
+  color: "white",
 };
 
 function NavBar() {
@@ -44,8 +44,18 @@ function NavBar() {
       >
         Musicians
       </NavLink>
+      <NavLink
+        to="/musicians/new"
+        exact
+        style={linkStyles}
+        activeStyle={{
+          background: "white",
+        }}
+      >
+        New Musician
+      </NavLink>
     </div>
   );
 }
 
-export default NavBar 
+export default NavBar;

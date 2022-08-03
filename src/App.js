@@ -5,6 +5,7 @@ import NavBar from './components/NavBar'
 import Home from './components/Home'
 import MusicianContainer from "./containers/MusicianContainer";
 import BandContainer from "./containers/BandContainer";
+import MusicianForm from "./forms/MusicianForm";
 
 function App() {
   const [musicians, setMusicians] = useState([])
@@ -27,9 +28,10 @@ function App() {
       <Router>
         <NavBar />
         <Routes>
-        <Route exact path= '/' element={<Home/>}/>
+        <Route exact path= '/musicians/new' element={<MusicianForm setMusicians={setMusicians}/>}/>
         <Route exact path= '/bands' element={<BandContainer bands={bands}/>}/>
         <Route exact path= '/musicians' element={<MusicianContainer musicians={musicians}/>}/>
+        <Route exact path= '/' element={<Home/>}/>
         </Routes>
       </Router>
     </div>
