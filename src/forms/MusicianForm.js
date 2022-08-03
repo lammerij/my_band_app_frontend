@@ -1,22 +1,32 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-function MusicianForm({ setMusicians }) {
+function MusicianForm({ musicians, setMusicians }) {
   const [name, setName] = useState("");
   const [instrument, setInstrument] = useState("");
   const [city, setCity] = useState("");
-  const [yearsExperience, setYearsExperience] = useState("");
+  const [years_experience, setYearsExperience] = useState(0);
+//   console.log(yearsExperience);
 
   const navigate = useNavigate();
 
   function handleNameChange(event) {
     setName(event.target.value);
   }
+  function handleInstrumentChange(event) {
+    setInstrument(event.target.value);
+  }
+  function handleCityChange(event) {
+    setCity(event.target.value);
+  }
+  function handleYearsExperienceChange(event) {
+    setYearsExperience(event.target.value);
+  }
 
   function handleSubmit(event) {
     event.preventDefault();
     if (
-      [name, instrument, city, yearsExperience].some(
+      [name, instrument, city, years_experience].some(
         (value) => value.trim() === ""
       )
     ) {
@@ -24,63 +34,69 @@ function MusicianForm({ setMusicians }) {
       return null;
     }
 
-
-    const newMusician = { name, instrument, city, yearsExperience };
-
+    const newMusician = { 
+        name: name,
+        instrument: instrument,
+        years_experience: parseInt(years_experience)
+     };
+    console.log(newMusician)
     fetch("http://localhost:9494/musicians", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ ...newMusician }),
+      body: JSON.stringify(newMusician),
     })
       .then((response) => response.json())
-      .then((newMusician) =>
-        setMusicians((musicians) => {
-          return [...musicians, newMusician];
-        })
-      );
+      .then((newMusician) => {
+        setMusicians([...musicians, newMusician]);
+      });
     navigate("/musicians");
     setName("");
     setInstrument("");
     setCity("");
-    setYearsExperience("");
+    setYearsExperience(0);
   }
   return (
     <div>
-     <form onSubmit={handleSubmit} className="form">
+      <form onSubmit={handleSubmit} className="form">
         <label>
           Name:
-          <input type="text" value={name} placeholder="Type Text Here..." onChange={handleNameChange} />
+          <input
+            type="text"
+            value={name}
+            placeholder="Type Text Here..."
+            onChange={handleNameChange}
+          />
         </label>
         <label>
           Instrument:
           <input
-            onChange={(event) => setInstrument(event.target.value)}
             type="text"
-            name="instrument"
+            value={instrument}
             placeholder="Type Text Here..."
-          ></input>
+            onChange={handleInstrumentChange}
+          />
         </label>
         <label>
           City:
           <input
-            onChange={(event) => setCity(event.target.value)}
             type="text"
-            name="city"
+            value={city}
             placeholder="Type Text Here..."
-          ></input>
+            onChange={handleCityChange}
+          />
         </label>
         <label>
           Years Experience:
           <input
-            onChange={(event) => setYearsExperience(event.target.value)}
-            type="text"
-            name="years experience"
-            placeholder="Type Text Here..."
-          ></input>
+            type="number"
+            value={years_experience}
+            placeholder="Type Number Here..."
+            onChange={handleYearsExperienceChange}
+          />
         </label>
-        <button style={{ background: "white" }}>Add Musician!</button>
+        <button>Add Musician!</button>
       </form>
     </div>
   );

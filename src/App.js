@@ -28,7 +28,7 @@ function App() {
       <Router>
         <NavBar />
         <Routes>
-        <Route exact path= '/musicians/new' element={<MusicianForm setMusicians={setMusicians}/>}/>
+        <Route exact path= '/musicians/new' element={<MusicianForm musicians={musicians}setMusicians={setMusicians}/>}/>
         <Route exact path= '/bands' element={<BandContainer bands={bands}/>}/>
         <Route exact path= '/musicians' element={<MusicianContainer musicians={musicians}/>}/>
         <Route exact path= '/' element={<Home/>}/>
