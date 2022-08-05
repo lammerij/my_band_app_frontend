@@ -1,21 +1,24 @@
 import React from "react";
+// import { useState } from "react";
 
-function MusicianCard({ musician }) {
-  const { id, name, instrument, city, years_experience } = musician;
+function MusicianCard({ musician, updatedHiredList }) {
+  const { id, name, instrument, city, years_experience, hired } = musician;
 
-  //   function handleFavoriteClick() {
-  //     fetch(`http://localhost:3001/players/${id}`, {
-  //       method: "PATCH",
-  //       headers: {
-  //         "Content-Type": "application/json",
-  //       },
-  //       body: JSON.stringify({
-  //         favorite: !favorite,
-  //       }),
-  //     })
-  //       .then((response) => response.json())
-  //       .then((data) => updatedFavoriteList(data));
-  //   }
+  function handleHiredClick() {
+    fetch(`http://localhost:9494/musicians/${id}`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        hired: !hired,
+      }), 
+    })
+      .then((response) => response.json())
+      .then((data) => updatedHiredList(data));
+  }
+
+  // function handleFiredClick(){}
 
   return (
     <div className="card">
@@ -31,17 +34,16 @@ function MusicianCard({ musician }) {
           </div>
         </div>
       </div>
-      <div className="btn">
-        <a href="">Retire</a>
+      <div>
+        <button onClick={handleHiredClick}>
+          {hired ? "Hired" : "Hire"}
+        </button>
       </div>
+      <button>Fire</button>
     </div>
   );
 }
 
 export default MusicianCard;
 
-{
-  /* <button onClick={handleFavoriteClick} style={{ background: "white" }}>
-        {favorite ? "Unfavorite" : "Favorite"}
-      </button> */
-}
+

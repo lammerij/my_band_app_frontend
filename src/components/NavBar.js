@@ -16,7 +16,6 @@ function NavBar() {
     <div>
       <NavLink
         to="/"
-        exact
         style={linkStyles}
         activestyle={{
           background: "white",
@@ -26,19 +25,26 @@ function NavBar() {
       </NavLink>
       <NavLink
         to="/bands"
-        exact
         style={linkStyles}
-        activeStyle={{
+        activestyle={{
           background: "white",
         }}
       >
         Bands
       </NavLink>
       <NavLink
-        to="/musicians"
-        exact
+        to="/bands/new"
         style={linkStyles}
-        activeStyle={{
+        activestyle={{
+          background: "white",
+        }}
+      >
+        Add Band
+      </NavLink>
+      <NavLink
+        to="/musicians"
+        style={linkStyles}
+        activestyle={{
           background: "white",
         }}
       >
@@ -46,13 +52,21 @@ function NavBar() {
       </NavLink>
       <NavLink
         to="/musicians/new"
-        exact
         style={linkStyles}
-        activeStyle={{
+        activestyle={{
           background: "white",
         }}
       >
-        New Musician
+        Add Musician
+      </NavLink>
+      <NavLink
+        to="/musicians/hiredmusicians"
+        style={linkStyles}
+        activestyle={{
+          background: "white",
+        }}
+      >
+        Hired Musicians
       </NavLink>
     </div>
   );

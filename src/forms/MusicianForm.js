@@ -6,7 +6,7 @@ function MusicianForm({ musicians, setMusicians }) {
   const [instrument, setInstrument] = useState("");
   const [city, setCity] = useState("");
   const [years_experience, setYearsExperience] = useState(0);
-//   console.log(yearsExperience);
+  //   console.log(yearsExperience);
 
   const navigate = useNavigate();
 
@@ -34,18 +34,19 @@ function MusicianForm({ musicians, setMusicians }) {
       return null;
     }
 
-    const newMusician = { 
-        name: name,
-        instrument: instrument,
-        years_experience: parseInt(years_experience)
-     };
-    console.log(newMusician)
+    const newMusician = {
+      name: name,
+      instrument: instrument,
+      city: city,
+      years_experience: parseInt(years_experience),
+    };
+    console.log(newMusician);
     fetch("http://localhost:9494/musicians", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(newMusician),
+      body: JSON.stringify({...newMusician, hired: false}),
     })
       .then((response) => response.json())
       .then((newMusician) => {

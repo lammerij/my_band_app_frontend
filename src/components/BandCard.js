@@ -24,9 +24,6 @@ function BandCard({ band }) {
           </div>
         </div>
       </div>
-      <div className="btn">
-        <a href="">Apply</a>
-      </div>
     </div>
   );
 }
