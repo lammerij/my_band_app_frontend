@@ -1,5 +1,4 @@
 import React from "react";
-// import { useState } from "react";
 
 function MusicianCard({ musician, updatedHiredList }) {
   const { id, name, instrument, city, years_experience, hired } = musician;
@@ -12,13 +11,20 @@ function MusicianCard({ musician, updatedHiredList }) {
       },
       body: JSON.stringify({
         hired: !hired,
-      }), 
+      }),
     })
       .then((response) => response.json())
       .then((data) => updatedHiredList(data));
   }
 
-  // function handleFiredClick(){}
+  function handleFiredClick() {
+    fetch(`http://localhost:9494/musicians/${id}`, {
+      method: "DELETE",
+      headers: {
+        "Content-type": "application/json",
+      },
+    });
+  }
 
   return (
     <div className="card">
@@ -35,15 +41,11 @@ function MusicianCard({ musician, updatedHiredList }) {
         </div>
       </div>
       <div>
-        <button onClick={handleHiredClick}>
-          {hired ? "Hired" : "Hire"}
-        </button>
+        <button onClick={handleHiredClick}>{hired ? "Hired" : "Hire"}</button>
       </div>
-      <button>Fire</button>
+      <button onClick={handleFiredClick}>Fire</button>
     </div>
   );
 }
 
 export default MusicianCard;
-
-
