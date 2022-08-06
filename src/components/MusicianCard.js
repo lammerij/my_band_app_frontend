@@ -1,6 +1,7 @@
 import React from "react";
 
-function MusicianCard({ musician, updatedHiredList }) {
+function MusicianCard({ musician, updatedHiredList, deleteMusicianList }) {
+
   const { id, name, instrument, city, years_experience, hired } = musician;
 
   function handleHiredClick() {
@@ -18,12 +19,16 @@ function MusicianCard({ musician, updatedHiredList }) {
   }
 
   function handleFiredClick() {
+    // debugger;
     fetch(`http://localhost:9494/musicians/${id}`, {
       method: "DELETE",
       headers: {
-        "Content-type": "application/json",
-      },
-    });
+          'Content-type': 'application/json'
+      }
+    })
+    .then(()=> {
+      deleteMusicianList(id)
+    }) 
   }
 
   return (

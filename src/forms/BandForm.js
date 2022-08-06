@@ -37,7 +37,7 @@ function BandForm({bands, setBands}) {
       
     };
     // console.log(newBand);
-    fetch("http://localhost:9494/musicians", {
+    fetch("http://localhost:9494/bands", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -66,7 +66,7 @@ function BandForm({bands, setBands}) {
           />
         </label>
         <label>
-          Instrument:
+          Genre:
           <input
             type="text"
             value={genre}
@@ -75,7 +75,7 @@ function BandForm({bands, setBands}) {
           />
         </label>
         <label>
-          City:
+          Instrument Needed:
           <input
             type="text"
             value={instrument_needed}

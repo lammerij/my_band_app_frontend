@@ -12,7 +12,7 @@ import BandForm from "./forms/BandForm";
 function App() {
   const [musicians, setMusicians] = useState([]);
   const [bands, setBands] = useState([]);
-
+  
   useEffect(() => {
     fetch("http://localhost:9494/musicians")
       .then((response) => response.json())
@@ -25,16 +25,19 @@ function App() {
       .then((data) => setBands(data));
   }, []);
 
-  function updatedHiredList(hiredMusician) {
-    setMusicians(
-      musicians.map((musician) => {
-        if (hiredMusician.id === musician.id) {
-          return hiredMusician;
-        } else {
-          return musician;
-        }
-      })
-    );
+  // const updatedMusicianList = (updatedMusician) => {
+  //   const updatedMusicians = musicians.filter(musician => updatedMusician.id === musician.id ? updatedMusician : musician)
+  //   setMusicians(updatedMusicians)
+  // }
+
+  const deleteMusicianList = (deletedMusician) => {
+    const deletedMusicians = musicians.filter(musician => musician.id !== deletedMusician)
+    setMusicians(deletedMusicians)
+  }
+
+  const updatedHiredList = (hiredMusician) => {
+    const hiredMusicians = musicians.map(musician => hiredMusician.id === musician.id ? hiredMusician : musician)
+    setMusicians(hiredMusicians)
   }
 
   const hiredMusicians = musicians.filter((musician) => {
@@ -68,9 +71,11 @@ function App() {
             path="/musicians"
             element={
               <MusicianContainer
-                setMusicians={setMusicians}
+                // setMusicians={setMusicians}
                 musicians={musicians}
                 updatedHiredList={updatedHiredList}
+                // updatedMusicianList={updatedMusicianList}
+                deleteMusicianList={deleteMusicianList}
               />
             }
           />

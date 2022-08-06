@@ -39,14 +39,15 @@ function MusicianForm({ musicians, setMusicians }) {
       instrument: instrument,
       city: city,
       years_experience: parseInt(years_experience),
+      hired: false,
+      fired: false
     };
-    console.log(newMusician);
     fetch("http://localhost:9494/musicians", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({...newMusician, hired: false}),
+      body: JSON.stringify(newMusician),
     })
       .then((response) => response.json())
       .then((newMusician) => {

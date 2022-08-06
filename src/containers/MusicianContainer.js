@@ -1,15 +1,16 @@
 import React from "react";
 import MusicianCard from "../components/MusicianCard";
 
-function MusicianContainer({ musicians, updatedHiredMusicians }) {
-  const musiciansCard = musicians.map((musician) => (
-    <MusicianCard
+function MusicianContainer({ musicians, updatedHiredList, updatedMusicianList, deleteMusicianList}) {
+  const musiciansCard = musicians.map((musician) => {
+    return <MusicianCard
       musician={musician}
       key={musician.id}
-      // setMusicians={setMusicians}
-      updatedHiredMusicians={updatedHiredMusicians}
+      updatedHiredList={updatedHiredList}
+      updatedMusicianList={updatedMusicianList}
+      deleteMusicianList={deleteMusicianList}
     />
-  ));
+  });
 
   return (
     <div style={{ background: "white" }}>
