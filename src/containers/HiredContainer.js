@@ -13,7 +13,7 @@ function HiredContainer({ hiredMusicians, updatedHiredList }) {
   });
   return (
     <div>
-      <h2>Hired Musicians</h2>
+      <h2></h2>
       <div>{hired}</div>
     </div>
   );

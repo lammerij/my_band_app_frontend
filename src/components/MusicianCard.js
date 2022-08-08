@@ -19,7 +19,6 @@ function MusicianCard({ musician, updatedHiredList, deleteMusicianList }) {
   }
 
   function handleFiredClick() {
-    // debugger;
     fetch(`http://localhost:9494/musicians/${id}`, {
       method: "DELETE",
       headers: {
